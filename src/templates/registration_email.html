@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Письмо после успешной регистрации</title>
+</head>
+<body>
+    {% if data.user.role == data.user.TECH_SPEC %}
+        <p>Ваш токен для доступа к API: {{data.user.auth_token.key}}</p>
+        <p>Для дальнейшей работы используйте полученный токен в header Authorization: Token ваш_токен  </p>
+    {% else %}
+        <p>Ваш логин: {{data.user.email}}</p>
+        <p>Ваш пароль: {{data.password}}</p>
+    {% endif %}
+    <p>С уважением,<br>Ваша команда</p>
+</body>
+</html>

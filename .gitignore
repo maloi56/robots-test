@@ -136,3 +136,6 @@ dmypy.json
 media/
 .idea
 udo journalctl -u gunicorn
+
+migrations/*
+!migrations/__init__.py

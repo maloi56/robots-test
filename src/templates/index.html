@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block css %}
+<link href="{% static 'base/css/index.css' %}" rel="stylesheet">
+{% endblock css %}
+
+{% block content %}
+<div class="container mt-5">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Добро пожаловать в мир роботов для потребителей!</h1>
+                    <p class="lead">История компании началась в далекой галактике, где каждый робот - не
+                        просто машина, а уникальная модель, выраженная двух-символьной
+                        последовательностью.</p>
+                    <p>Схожая с телефонами линейка моделей и их версий, а также уникальные имена вроде
+                        R2-D2 делают наших роботов неповторимыми. </p>
+                    <p>Станьте частью этого удивительного мира и выберите своего идеального робота уже
+                        сегодня!</p>
+                </div>
+                <div class="col-lg-12 mt-3">
+                        <a href="#" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-shopping-cart"></i> Заказать робота
+                        </a>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <i class="fas fa-cogs fa-3x mb-3 text-primary"></i>
+                        <h3>Уникальные модели</h3>
+                        <p>Каждый робот - это уникальная модель, выраженная двух-символьной
+                            последовательностью, созданная с любовью и заботой.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <i class="fas fa-user fa-3x mb-3 text-primary"></i>
+                        <h3>Покупатели</h3>
+                        <p>Наши постоянные клиенты заказывают роботов для различных нужд.
+                            Присоединяйтесь к ним и найдите своего идеального компаньона!</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center">
+                        <i class="fas fa-clock fa-3x mb-3 text-primary"></i>
+                        <h3>Ожидание заказов</h3>
+                        <p>Если вашего идеального робота нет в наличии, не волнуйтесь. Он будет ждать
+                            вас в списке ожидания!</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+{% endblock content %}
