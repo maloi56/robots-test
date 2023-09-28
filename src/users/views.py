@@ -20,10 +20,6 @@ class UserLoginView(TitleMixin, LoginView):
     redirect_authenticated_user = True
     title = 'R4C - Авторизация'
 
-    def form_invalid(self, form):
-        res = super().form_invalid(form)
-        return res
-
 
 class RegistrationView(SuccessMessageMixin, TitleMixin, CreateView):
     model = RegistrationQueries
@@ -37,9 +33,6 @@ class RegistrationView(SuccessMessageMixin, TitleMixin, CreateView):
         email = form.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             form.add_error('email', 'Пользователь с таким email уже существует.')
-            return self.form_invalid(form)
-        elif RegistrationQueries.objects.filter(email=email).exists():
-            form.add_error('email', 'Ваш запрос уже принят на рассмотрение.')
             return self.form_invalid(form)
         return super().form_valid(form)
 

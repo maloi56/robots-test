@@ -24,6 +24,7 @@ class User(AbstractUser):
     username = models.CharField(verbose_name='логин', unique=True, blank=True, null=True)
     role = models.CharField(verbose_name='Роль', choices=ROLE_CHOICES, default=ADMIN, max_length=2,
                             help_text='Выбор роли пользователя: Директор/тех.специалист')
+    name = models.CharField(verbose_name='Имя', max_length=32, null=True, blank=True)
 
     objects = CustomUserManager()
 
