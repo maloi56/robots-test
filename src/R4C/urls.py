@@ -12,6 +12,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('users/', include('users.urls', namespace='users')),
     path('store/', include('store.urls', namespace='store')),
+    path('management/', include('management.urls', namespace='management')),
 ]
 
 urlpatterns += router.urls

@@ -68,7 +68,8 @@ INSTALLED_APPS = [
     'orders',
     'robots',
     'users',
-    'store'
+    'store',
+    'management'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "debug_toolbar_force.middleware.ForceDebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'R4C.urls'
