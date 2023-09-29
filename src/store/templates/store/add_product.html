@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="" style="margin-top:30px">
+        {% if messages or form.non_field_errors %}
+        <div class="alert
+          {% if messages %}
+            {% for message in messages %}
+              {% if 'success' in message.tags %}
+                alert-success
+                {% else %}
+                alert-warning
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            alert-warning
+          {% endif %}
+          alert-dismissible fade show" role="alert"
+             style="margin-top: 50px;">
+            {% if messages %}
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+            {% else %}
+            {{ form.non_field_errors }}
+            {% endif %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h4 class="mt-3 mb-3">Добавление робота на продажу</h4>
+            <form method="POST" action="{% url 'store:add_product'%}">
+                {% csrf_token %}
+                <div class="col-lg-12 text-center" style="margin-bottom: 15px;">
+                    <img id="image-preview" width="150" height="150" src="{% static '/img/store/r2d2.png' %}" alt="Image preview" class="img-thumbnail">
+                </div>
+                <div class="mb-3">
+                    {{form.image}}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.robot.auto_id }}" class="form-label">{{form.robot.label}}</label>
+                    {{form.robot}}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ form.price.auto_id }}" class="form-label">{{form.price.label}}</label>
+                    {{form.price}}
+                </div>
+                <div class="mb-4">
+                    <label for="{{ form.description.auto_id }}" class="form-label">{{form.description.label}}</label>
+                    {{form.description}}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

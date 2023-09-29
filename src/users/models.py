@@ -17,6 +17,7 @@ class User(AbstractUser):
     TECH_SPEC = '2'
 
     ROLE_CHOICES = ((None, 'Выберите должность'),
+                    (ADMIN, 'Администратор'),
                     (DIRECTOR, 'Директор'),
                     (TECH_SPEC, 'Технический специалист'))
 
