@@ -18,10 +18,16 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'store:catalog' %}">Каталог роботов</a>
                 </li>
-            {% if user.is_authenticated and user.role == user.ADMIN%}
+            {% if user.is_authenticated %}
+                {% if user.role == user.ADMIN%}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'store:add_product' %}">Выставить робота на продажу</a>
                 </li>
+                {% elif user.role == user.DIRECTOR%}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'management:management' %}">Отчеты</a>
+                </li>
+                {% endif %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
