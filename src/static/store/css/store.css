@@ -1,0 +1,38 @@
+.menu {
+        background-color: #f8f9fa;
+    }
+    .menu .nav-link:hover,
+    .menu .nav-link.active {
+        background-color: #343a40;
+        color: #fff;
+    }
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.card {
+    min-height: 240px;
+}
+
+.card-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.card-body {
+    height: 160px;
+    overflow: hidden;
+}
+
+.clear-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #999;
+}
