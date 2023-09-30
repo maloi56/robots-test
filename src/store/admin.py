@@ -11,5 +11,10 @@ class WarehouseAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class WarehouseAdmin(admin.ModelAdmin):
-    list_display = ('robot', 'price')
+    list_display = ('robot', 'price', 'display_quantity')
     # readonly_fields = ('model', 'version', 'serial', 'created',)
+
+    def display_quantity(self, obj):
+        return obj.robot.quantity
+
+    display_quantity.short_description = 'Остаток'

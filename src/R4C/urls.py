@@ -13,6 +13,7 @@ urlpatterns = [
     path('users/', include('users.urls', namespace='users')),
     path('store/', include('store.urls', namespace='store')),
     path('management/', include('management.urls', namespace='management')),
+    path('orders/', include('orders.urls', namespace='orders')),
 ]
 
 urlpatterns += router.urls

@@ -6,6 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, ListView
 
 from common.view import TitleMixin
+from orders.forms import OrderForm
 from store.forms import AddProductForm
 from store.models import Product
 
@@ -36,5 +37,11 @@ class ProductsView(TitleMixin, ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        queryset = self.model.objects.select_related('robot').order_by('robot__model', 'robot__version')
+        queryset = self.model.objects.select_related('robot').order_by('-robot__quantity', 'robot__model',
+                                                                       'robot__version')
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = OrderForm
+        return context

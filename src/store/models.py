@@ -18,7 +18,7 @@ class Warehouse(models.Model):
 
 class Product(models.Model):
     robot = models.OneToOneField(verbose_name='Робот',
-                                 to=Warehouse, related_name='robot', on_delete=models.PROTECT)
+                                 to=Warehouse, related_name='product', on_delete=models.PROTECT)
     description = models.TextField(verbose_name='Описание', null=True, blank=True)
     price = models.DecimalField(verbose_name='Цена', max_digits=8, decimal_places=2, validators=[MinValueValidator(0)])
     image = models.ImageField(verbose_name='Изображение', upload_to='products_images', null=True, blank=True)
