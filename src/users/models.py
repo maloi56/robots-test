@@ -1,14 +1,11 @@
-import logging
-
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.template.loader import render_to_string
 
+from R4C.settings import LOGGER
 from users.managers import CustomUserManager
-
-logger = logging.getLogger(__name__)
 
 
 class User(AbstractUser):
@@ -54,10 +51,8 @@ class RegistrationQueries(models.Model):
     def send_registration_email(self, user_pk, password):
         """
         Функция для отправки данных для входа пользователю на почту.
-        Удаляет запрос на создание аккаунт из БД.
         """
         try:
-            logger.info(f'Task started: send_registration_email for {self.email}')
             user = User.objects.get(pk=user_pk)
             subject = 'Учетные данные для R4C'
             context = {'data': {'user': user, 'password': password}}
@@ -71,7 +66,7 @@ class RegistrationQueries(models.Model):
             email.content_subtype = 'html'
             sent = email.send()
             if sent:
-                self.delete()
-            logger.info(f'Task completed: send_registration_email for {self.email}')
+                return True
         except Exception as e:
-            logger.error(f'Error in send_registration_email for {self.email}: {e}')
+            LOGGER.error(f'Error in send_registration_email for {self.email}: {e}')
+            return False

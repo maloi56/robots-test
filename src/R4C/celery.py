@@ -8,4 +8,4 @@ app = Celery('R4C')
 
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
-CELERY_IMPORTS = ("users.signals",)
+CELERY_IMPORTS = ('users.signals', 'store.signals',)

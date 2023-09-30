@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+import logging
 from pathlib import Path
 
 import environ
@@ -81,8 +82,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "debug_toolbar_force.middleware.ForceDebugToolbarMiddleware"
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    # "debug_toolbar_force.middleware.ForceDebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'R4C.urls'
@@ -142,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -207,3 +208,27 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
+
+# LOGGING = {
+#     'version': 1,
+#     'filters': {
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',
+#         }
+#     },
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'filters': ['require_debug_true'],
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#             'handlers': ['console'],
+#         }
+#     }
+# }
+
+LOGGER = logging.getLogger(__name__)
