@@ -2,9 +2,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from orders.models import Order
+from orders.tasks import send_order_notification_email
 from robots.models import Robot
 from store.models import Warehouse
-from orders.tasks import send_order_notification_email
 
 
 @receiver(post_save, sender=Robot)
@@ -15,6 +15,6 @@ def create_robot(sender, instance=None, created=False, **kwargs):
             warehouse.quantity += 1
             warehouse.save()
 
-            orders = Order.objects.filter(product=warehouse)
+            orders = Order.objects.filter(product=warehouse).all()
             for order in orders:
                 send_order_notification_email.delay(order.pk)
