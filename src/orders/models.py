@@ -37,6 +37,7 @@ class Order(models.Model):
             sent = email.send()
             if sent:
                 return True
+            return False
         except Exception as e:
             LOGGER.error(f'Error in send_registration_email for {self}: {e}')
             return False
