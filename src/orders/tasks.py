@@ -1,8 +1,8 @@
 from celery import shared_task
 from celery_singleton import Singleton
 
-from R4C.settings import LOGGER
 from orders.models import Order
+from R4C.settings import LOGGER
 
 
 @shared_task(base=Singleton)

@@ -1,17 +1,16 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages import error
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 
-from common.view import TitleMixin
+from common.view import RoleMixin, TitleMixin
 from orders.forms import OrderForm
 from store.forms import AddProductForm
 from store.models import Product
+from users.models import User
 
 
-class AddProductView(TitleMixin, SuccessMessageMixin, LoginRequiredMixin, CreateView):
+class AddProductView(RoleMixin, TitleMixin, SuccessMessageMixin, LoginRequiredMixin, CreateView):
     model = Product
     form_class = AddProductForm
     success_url = reverse_lazy('store:add_product')
@@ -19,14 +18,7 @@ class AddProductView(TitleMixin, SuccessMessageMixin, LoginRequiredMixin, Create
     login_url = reverse_lazy('users:login')
     title = 'R4C - Выставление на продажу'
     success_message = 'Робот успешно выставлен на продажу!'
-
-    def form_invalid(self, form):
-        if 'robot' in form.errors:
-            form.errors.pop('robot')
-            form.add_error('robot', f'{Product.objects.get(pk=form.data["robot"])} уже выставлен на продажу')
-
-        error(self.request, form.errors)
-        return HttpResponseRedirect(reverse('store:add_product'))
+    role = User.ADMIN
 
 
 class ProductsView(TitleMixin, ListView):

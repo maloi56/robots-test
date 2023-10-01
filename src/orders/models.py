@@ -3,8 +3,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.template.loader import render_to_string
 
-from R4C.settings import LOGGER
 from customers.models import Customer
+from R4C.settings import LOGGER
 from store.models import Warehouse
 
 

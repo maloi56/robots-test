@@ -1,6 +1,6 @@
 from rest_framework.mixins import CreateModelMixin
-from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.viewsets import GenericViewSet
 
 from robots.serializers import RobotsSerializer
 

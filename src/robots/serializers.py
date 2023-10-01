@@ -6,5 +6,4 @@ from robots.models import Robot
 class RobotsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Robot
-        exclude = ('created',)
-
+        exclude = ('id', 'created',)

@@ -5,6 +5,7 @@ from django.urls import include, path
 
 from robots.urls import router
 from users.views import IndexView
+
 from .yasg import urlpatterns as doc_urls
 
 urlpatterns = [
